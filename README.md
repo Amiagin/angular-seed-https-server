@@ -1,6 +1,8 @@
 # angular-seed-https-server
 https server for angular-seed
 
+Derived from the original http-server
+
 Creating certificate
 
 $ openssl genrsa -out server-key.pem 1024 
