@@ -5,9 +5,9 @@ Derived from the original http-server
 
 Creating certificate
 
-$ openssl genrsa -out server-key.pem 1024 
-$ openssl req -new -key server-key.pem -out server-request.csr
-$ openssl x509 -req -in server-request.csr -signkey server-key.pem -out server-cert.pem
+$ openssl genrsa -out server-key.pem 1024<br> 
+$ openssl req -new -key server-key.pem -out server-request.csr<br>
+$ openssl x509 -req -in server-request.csr -signkey server-key.pem -out server-cert.pem<br>
 
 Running
 
