@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+var httpsServer = require('./lib/https-server');
+var port = 443;
+
+var options = {
+    key:  __dirname + '/server-key.pem',
+    cert: __dirname + '/server-cert.pem'
+};
+
+options.headers = {'Access-Control-Allow-Origin' : '*' };
+options.root = '/project-path/public_html';
+options.log = function(request) {
+    console.log('[%s] "%s %s" "%s"',(new Date).toUTCString(),request.method,request.url,request.headers['user-agent']);
+}
+
+var server = httpsServer.createServer(options);
+server.listen(port,'0.0.0.0',function() {
+    console.log('Starting up https-server');
+    console.log('Hit CTRL-C to stop the server\n');
+});
+
+if (process.platform !== 'win32') {
+    process.on('SIGINT',function() {
+        console.log('https-server stopped.');
+        process.exit();
+    });
+}
